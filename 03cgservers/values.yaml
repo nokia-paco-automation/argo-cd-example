@@ -1,0 +1,303 @@
+myClientGroup: servergrp1
+myDcgwGroup: dcgwgrp1
+myFabricAddressingSchema: dual-stack
+myFabricGroup: fabric
+myFabricLoopBackIpv4Cidr:
+- 100.112.100.0/24
+myFabricLoopBackIpv6Cidr:
+- 3100:100::/48
+myLabels:
+- allNetworkDevices: leaf-grp1
+  name: fabric
+  networkDevices:
+  - name: leaf1
+  - name: leaf2
+  serverDevices:
+  - name: master0
+  - name: worker0
+- allNetworkDevices: leaf-grp1
+  name: servergrp1
+  networkDevices:
+  - name: leaf1
+  - name: leaf2
+  serverDevices:
+  - name: master0
+  - name: worker0
+- allNetworkDevices: dc-grp1
+  name: dcgwgrp1
+  networkDevices:
+  - name: dcgw1
+  - name: dcgw2
+  serverDevices:
+  - name: master0
+  - name: worker0
+myNodes:
+- as: 65001
+  endpoints:
+  - adminKey: 0
+    esi: ''
+    ipv4Prefix: 100.112.100.1/32
+    ipv6Prefix: 3100:100::1/128
+    kind: loopback
+    lag: ''
+    name: system0
+    neighbor:
+      as: 65002
+      ipv4Prefix: 100.112.100.2/32
+      ipv6Prefix: 3100:100::2/128
+      name: system0
+      nodeName: leaf2
+    portSpeed: ''
+    systemIdMac: ''
+    vlanTagging: false
+  - adminKey: 0
+    esi: ''
+    ipv4Prefix: 100.64.0.0/31
+    ipv6Prefix: 3100:64::0/127
+    kind: isl
+    lag: ''
+    name: ethernet-1/49
+    neighbor:
+      as: 65002
+      ipv4Prefix: 100.64.0.1/31
+      ipv6Prefix: 3100:64::1/127
+      name: ethernet-1/49
+      nodeName: leaf2
+    portSpeed: 10G
+    systemIdMac: ''
+    vlanTagging: false
+  - adminKey: 0
+    esi: ''
+    ipv4Prefix: ''
+    ipv6Prefix: ''
+    kind: dcgwgrp1
+    lag: ''
+    name: ethernet-1/50
+    neighbor:
+      as: 0
+      ipv4Prefix: ''
+      ipv6Prefix: ''
+      name: ''
+      nodeName: dcgw1
+    portSpeed: 100G
+    systemIdMac: ''
+    vlanTagging: true
+  - adminKey: 0
+    esi: ''
+    ipv4Prefix: ''
+    ipv6Prefix: ''
+    kind: servergrp1
+    lag: lag1
+    name: ethernet-1/1
+    neighbor:
+      as: 0
+      ipv4Prefix: ''
+      ipv6Prefix: ''
+      name: bond0
+      nodeName: master0
+    portSpeed: 10G
+    systemIdMac: ''
+    vlanTagging: true
+  - adminKey: 0
+    esi: ''
+    ipv4Prefix: ''
+    ipv6Prefix: ''
+    kind: servergrp1
+    lag: lag2
+    name: ethernet-1/2
+    neighbor:
+      as: 0
+      ipv4Prefix: ''
+      ipv6Prefix: ''
+      name: bond0
+      nodeName: worker0
+    portSpeed: 10G
+    systemIdMac: ''
+    vlanTagging: true
+  - adminKey: 1
+    esi: 00:12:12:12:12:12:12:00:00:01
+    ipv4Prefix: ''
+    ipv6Prefix: ''
+    kind: servergrp1
+    lag: ''
+    name: lag1
+    neighbor:
+      as: 0
+      ipv4Prefix: ''
+      ipv6Prefix: ''
+      name: bond0
+      nodeName: master0
+    portSpeed: 10G
+    systemIdMac: 00:00:00:00:00:01
+    vlanTagging: true
+  - adminKey: 2
+    esi: 00:12:12:12:12:12:12:00:00:02
+    ipv4Prefix: ''
+    ipv6Prefix: ''
+    kind: servergrp1
+    lag: ''
+    name: lag2
+    neighbor:
+      as: 0
+      ipv4Prefix: ''
+      ipv6Prefix: ''
+      name: bond0
+      nodeName: worker0
+    portSpeed: 10G
+    systemIdMac: 00:00:00:00:00:02
+    vlanTagging: true
+  kind: srl
+  name: leaf1
+  routerID: 100.112.100.1
+- as: 65002
+  endpoints:
+  - adminKey: 0
+    esi: ''
+    ipv4Prefix: 100.112.100.2/32
+    ipv6Prefix: 3100:100::2/128
+    kind: loopback
+    lag: ''
+    name: system0
+    neighbor:
+      as: 65002
+      ipv4Prefix: 100.112.100.1/32
+      ipv6Prefix: 3100:100::1/128
+      name: system0
+      nodeName: leaf1
+    portSpeed: 10G
+    systemIdMac: ''
+    vlanTagging: false
+  - adminKey: 0
+    esi: ''
+    ipv4Prefix: 100.64.0.1/31
+    ipv6Prefix: 3100:64::1/127
+    kind: isl
+    lag: ''
+    name: ethernet-1/49
+    neighbor:
+      as: 65001
+      ipv4Prefix: 100.64.0.0/31
+      ipv6Prefix: 3100:64::0/127
+      name: ethernet-1/49
+      nodeName: leaf1
+    portSpeed: 10G
+    systemIdMac: ''
+    vlanTagging: false
+  - adminKey: 0
+    esi: ''
+    ipv4Prefix: ''
+    ipv6Prefix: ''
+    kind: dcgwgrp1
+    lag: ''
+    name: ethernet-1/50
+    neighbor:
+      as: 0
+      ipv4Prefix: ''
+      ipv6Prefix: ''
+      name: ''
+      nodeName: dcgw1
+    portSpeed: 100G
+    systemIdMac: ''
+    vlanTagging: true
+  - adminKey: 0
+    esi: ''
+    ipv4Prefix: ''
+    ipv6Prefix: ''
+    kind: servergrp1
+    lag: lag1
+    name: ethernet-1/1
+    neighbor:
+      as: 0
+      ipv4Prefix: ''
+      ipv6Prefix: ''
+      name: bond0
+      nodeName: master0
+    portSpeed: 10G
+    systemIdMac: ''
+    vlanTagging: true
+  - adminKey: 0
+    esi: ''
+    ipv4Prefix: ''
+    ipv6Prefix: ''
+    kind: servergrp1
+    lag: lag2
+    name: ethernet-1/2
+    neighbor:
+      as: 0
+      ipv4Prefix: ''
+      ipv6Prefix: ''
+      name: bond0
+      nodeName: worker0
+    portSpeed: 10G
+    systemIdMac: ''
+    vlanTagging: true
+  - adminKey: 1
+    esi: 00:12:12:12:12:12:12:00:00:01
+    ipv4Prefix: ''
+    ipv6Prefix: ''
+    kind: servergrp1
+    lag: ''
+    name: lag1
+    neighbor:
+      as: 0
+      ipv4Prefix: ''
+      ipv6Prefix: ''
+      name: bond0
+      nodeName: master0
+    portSpeed: 10G
+    systemIdMac: 00:00:00:00:00:01
+    vlanTagging: true
+  - adminKey: 2
+    esi: 00:12:12:12:12:12:12:00:00:02
+    ipv4Prefix: ''
+    ipv6Prefix: ''
+    kind: servergrp1
+    lag: ''
+    name: lag2
+    neighbor:
+      as: 0
+      ipv4Prefix: ''
+      ipv6Prefix: ''
+      name: bond0
+      nodeName: worker0
+    portSpeed: 10G
+    systemIdMac: 00:00:00:00:00:02
+    vlanTagging: true
+  kind: srl
+  name: leaf2
+  routerID: 100.112.100.2
+myWorkloads:
+- itfces:
+  - addressingSchema: ''
+    clientGroup: servergrp1
+    ipv4Prefix:
+    - ''
+    ipv4PrefixLength: 0
+    ipv6Prefix:
+    - ''
+    ipv6PrefixLength: 0
+    kind: bridged
+    vlanId: 0
+  name: provisioning
+- itfces:
+  - addressingSchema: ''
+    clientGroup: servergrp1
+    ipv4Prefix:
+    - 10.101.12.0/26
+    ipv4PrefixLength: 0
+    ipv6Prefix:
+    - 2a02:1800:80:7000::/64
+    ipv6PrefixLength: 0
+    kind: irb
+    vlanId: 10
+  - addressingSchema: dual-stack
+    clientGroup: dcgwgrp1
+    ipv4Prefix:
+    - 10.100.40.0/24
+    ipv4PrefixLength: 31
+    ipv6Prefix:
+    - 2a02:1800:80:7050::/64
+    ipv6PrefixLength: 127
+    kind: routed
+    vlanId: 15
+  name: infrastructure

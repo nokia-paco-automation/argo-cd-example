@@ -1,0 +1,281 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "properties": {
+        "myClientGroup": {
+            "type": "string",
+            "description": ""
+        },
+        "myFabricGroup": {
+            "type": "string",
+            "description": ""
+        },
+        "myDcgwGroup": {
+            "type": "string",
+            "description": ""
+        },
+        "myLabels": {
+            "type": "array",
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "allNetworkDevices": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "networkDevices": {
+                        "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "name"
+                            ],
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "serverDevices": {
+                        "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "name"
+                            ],
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "allNetworkDevices",
+                    "name",
+                    "networkDevices",
+                    "serverDevices"
+                ],
+                "type": "object"
+            },
+            "description": ""
+        },
+        "myFabricAddressingSchema": {
+            "type": "string",
+            "description": ""
+        },
+        "myFabricLoopBackIpv4Cidr": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": ""
+        },
+        "myFabricLoopBackIpv6Cidr": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": ""
+        },
+        "myNodes": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "as",
+                    "endpoints",
+                    "kind",
+                    "name",
+                    "routerID"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "as": {
+                        "type": "number",
+                        "multipleOf": 1.0
+                    },
+                    "routerID": {
+                        "type": "string"
+                    },
+                    "endpoints": {
+                        "type": "array",
+                        "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "adminKey": {
+                                    "multipleOf": 1.0,
+                                    "type": "number"
+                                },
+                                "esi": {
+                                    "type": "string"
+                                },
+                                "ipv4Prefix": {
+                                    "type": "string"
+                                },
+                                "ipv6Prefix": {
+                                    "type": "string"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                },
+                                "lag": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "neighbor": {
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "as": {
+                                            "multipleOf": 1.0,
+                                            "type": "number"
+                                        },
+                                        "ipv4Prefix": {
+                                            "type": "string"
+                                        },
+                                        "ipv6Prefix": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "nodeName": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "as",
+                                        "ipv4Prefix",
+                                        "ipv6Prefix",
+                                        "name",
+                                        "nodeName"
+                                    ],
+                                    "type": "object"
+                                },
+                                "portSpeed": {
+                                    "type": "string"
+                                },
+                                "systemIdMac": {
+                                    "type": "string"
+                                },
+                                "vlanTagging": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "required": [
+                                "adminKey",
+                                "esi",
+                                "ipv4Prefix",
+                                "ipv6Prefix",
+                                "kind",
+                                "lag",
+                                "name",
+                                "neighbor",
+                                "portSpeed",
+                                "systemIdMac",
+                                "vlanTagging"
+                            ],
+                            "type": "object"
+                        }
+                    }
+                },
+                "additionalProperties": false
+            },
+            "description": ""
+        },
+        "myWorkloads": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "itfces",
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "itfces": {
+                        "type": "array",
+                        "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "addressingSchema": {
+                                    "type": "string"
+                                },
+                                "clientGroup": {
+                                    "type": "string"
+                                },
+                                "ipv4Prefix": {
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "type": "array"
+                                },
+                                "ipv4PrefixLength": {
+                                    "multipleOf": 1.0,
+                                    "type": "number"
+                                },
+                                "ipv6Prefix": {
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "type": "array"
+                                },
+                                "ipv6PrefixLength": {
+                                    "multipleOf": 1.0,
+                                    "type": "number"
+                                },
+                                "kind": {
+                                    "type": "string"
+                                },
+                                "vlanId": {
+                                    "multipleOf": 1.0,
+                                    "type": "number"
+                                }
+                            },
+                            "required": [
+                                "addressingSchema",
+                                "clientGroup",
+                                "ipv4Prefix",
+                                "ipv4PrefixLength",
+                                "ipv6Prefix",
+                                "ipv6PrefixLength",
+                                "kind",
+                                "vlanId"
+                            ],
+                            "type": "object"
+                        }
+                    }
+                },
+                "additionalProperties": false
+            },
+            "description": ""
+        }
+    },
+    "required": [
+        "myClientGroup",
+        "myDcgwGroup",
+        "myFabricAddressingSchema",
+        "myFabricGroup",
+        "myFabricLoopBackIpv4Cidr",
+        "myFabricLoopBackIpv6Cidr",
+        "myLabels",
+        "myNodes",
+        "myWorkloads"
+    ],
+    "title": "Values",
+    "type": "object"
+}
